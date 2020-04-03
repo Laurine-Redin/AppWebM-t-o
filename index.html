@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="src/style.css" rel="stylesheet">
+    <title> Kawaï Météo </title>
+    <link rel = "icon" type = "image/png" sizes = "32x32" href = "assets/icones/soleil.png">
+</head>
+<body>
+    
+    <!--   BARRE HAUT   -->
+    <nav class = "bg-pink-200">
+      <div class = "max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 border-b-2 border-purple-400">
+
+        <div class = "flex items-center justify-between h-16">
+
+          <div class = "flex flex-box justify-center sm:items-stretch sm:justify-start">
+
+          <!--   Nom Page   -->
+            <div class = "flex flex-row inset-y-0 left-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            	<div class = "flex justify-center items-center">
+                	<img src = "img/cloudy.png" id = "img_icon" width = "50" height = "50">
+            	</div>
+
+            	<a class = "ml-0 px-3 py-1 text-purple-400 font-bold"> Kawaï Météo </a>
+
+            	<div class = "flex justify-center items-center">
+                	<img src = "img/cloudy.png" id = "img_icon" width = "50" height = "150">
+	            </div>
+            </div>
+
+            <!--   Choix Ville   -->
+            <div class = "px-3 py-2 text-sm items-center font-medium text-purple-400 focus:text-blue-400 transition duration-150 ease-in-out" id = "day-2">
+
+                <h class = "mr-5"> Ma Ville : </h>
+                <select class = "bg-transparent" id = "city-selector" style = "background-color: rgba(255, 255, 255, .5)">
+                    <option class = "bg-purple-300 text-gray-600" value = "ny"> New York </option>
+                    <option class = "bg-purple-300 text-gray-600" value = "pa"> Paris </option>
+                    <option class = "bg-purple-300 text-gray-600" value = "mo"> Moscow </option>
+                    <option class = "bg-purple-300 text-gray-600" value = "to"> Tokyo </option>
+                    <option class = "bg-purple-300 text-gray-600" value = "sy"> Sydney </option>
+                </select>
+            </div>
+        </div>
+      </div>
+    </nav>
+
+    <!--   Panneaux   -->
+    <div class = "app h-screen flex justify-center items-center" >
+        <div class = "flex flex-col" id="city-select">
+                
+            <div class = "flex flex-row items-center justify-around ">
+
+                <button class = "text-5xl mr-4" id="btnLess" onclick = "prevSlide()"></button>
+
+                    <div class = "self-auto px-12 py-4 pt-10 text-center flex-1 text-purple-400 font-bold" style = "border-radius: 1.6rem;  background-color: rgba(255, 204, 255, .75);" id = "day-0">
+
+                        <h1 class="text-xl"> Aujourd'hui </h1>
+                        <p> Voici votre météo ! </p>
+                        <p id = "temp">Température : 20 °C</p>
+                        <p id = "wind">Vent : 30 km/h</p>
+                        <p id = "hum">Humidité : 90 %</p>
+                        <div class = "flex justify-center items-center">
+                            <img src = "img/cloudy.png" id = "img_icon" width = "150" height = "150">
+                        </div>
+                    </div>
+    
+                    <div class = "self-auto px-12 py-4 pt-10 text-center flex-1 text-purple-400 font-bold" style = "border-radius: 1.6rem;  background-color: rgba(255, 204, 255, .75);" id = "day-1">
+                        <h1 class = "text-xl"> Demain </h1>
+                        <p> Voici votre météo ! </p>
+                        <p id = "temp">Température : 20 °C</p>
+                        <p id = "wind">Vent : 30 km/h</p> 
+                        <p id = "hum">Humidité : 90 %</p>
+                        <div class = "flex justify-center items-center">
+                            <img src = "img/cloudy.png" id="img_icon" width = "150" height = "150">
+                        </div>
+                    </div>
+    
+                    <div class = "self-auto px-12 py-4 pt-10 text-center flex-1 text-purple-400 font-bold" style = "border-radius: 1.6rem;  background-color: rgba(255, 204, 255, .75);" id = "day-2">
+                        <h1 class = "text-xl"> Apres Demain </h1>
+                        <p> Voici votre météo ! </p>
+                        <p id = "temp">Température : 20 °C</p>
+                        <p id = "wind">Vent : 30 km/h</p>
+                        <p id = "hum">Humidité : 90 %</p>
+                        <div class = "flex justify-center items-center">
+                            <img src = "img/cloudy.png" id = "img_icon" width = "150" height = "150">
+                        </div>
+                    </div>
+
+                    <button class = "text-5xl ml-4" id = "btnPlus" onclick = "nextSlide()"></button>
+                </div>
+
+
+
+                <div style = "text-align:center">
+                    <span class = "h-5 w-5 mx-1 my-3 border-0 hover:border-8 rounded-full inline-block" style = "  background-color: rgba(255, 204, 255, .75);" onclick = "setSlide(0)"></span>
+                    <span class = "h-5 w-5 mx-1 my-3 border-0 hover:border-8 rounded-full inline-block" style = "  background-color: rgba(255, 204, 255, .75);" onclick = "setSlide(1)"></span>
+                    <span class = "h-5 w-5 mx-1 my-3 border-0 hover:border-8 rounded-full inline-block" style = " background-color: rgba(255, 204, 255, .75);" onclick = "setSlide(2)"></span>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="src/index.js"></script>
+
+</body>
+</html>
